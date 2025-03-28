@@ -17,7 +17,7 @@ const options = {
       }
     ]
   },
-  apis: [__dirname + '/index.js'], // ⚠️ très important
+  apis: [__dirname + '/index.js'], 
 };
 
 const swaggerSpec = swaggerJsdoc(options);

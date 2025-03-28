@@ -60,9 +60,9 @@ app.post('/api/payments', async (req, res) => {
           eventDate: '2025-04-12'
         }
       });
-      console.log('✅ Notification envoyée');
+      console.log(' Notification envoyée');
     } catch (notifErr) {
-      console.error('❌ Notification échouée:', notifErr.message);
+      console.error(' Notification échouée:', notifErr.message);
     }
 
     res.status(201).json({
@@ -82,10 +82,10 @@ const waitForDb = async (retries = 10, delay = 1000) => {
       const client = await pool.connect();
       await client.query('SELECT 1');
       client.release();
-      console.log('✅ DB is ready');
+      console.log(' DB is ready');
       return;
     } catch (err) {
-      console.log(`⏳ Waiting for DB (${i + 1}/${retries})...`);
+      console.log(`Waiting for DB (${i + 1}/${retries})...`);
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
@@ -109,9 +109,9 @@ const initDb = async () => {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log("✅ Table 'payments' initialisée.");
+    console.log(" Table 'payments' initialisée.");
   } catch (err) {
-    console.error('❌ Erreur init DB:', err);
+    console.error(' Erreur init DB:', err);
   } finally {
     client.release();
   }
@@ -120,9 +120,9 @@ const initDb = async () => {
 initDb()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`🚀 Payments service running on port ${PORT}`);
+      console.log(` Payments service running on port ${PORT}`);
     });
   })
   .catch(err => {
-    console.error('❌ Failed to start Payments service:', err);
+    console.error('Failed to start Payments service:', err);
   });

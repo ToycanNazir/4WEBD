@@ -41,14 +41,14 @@ async function testDbConnection(config, serviceName) {
     const client = await pool.connect();
     const result = await client.query('SELECT NOW()');
     
-    console.log(`✅ Database connection successful for ${serviceName}`);
+    console.log(` Database connection successful for ${serviceName}`);
     console.log(`   Current database time: ${result.rows[0].now}`);
     
     client.release();
     await pool.end();
     return true;
   } catch (error) {
-    console.error(`❌ Database connection failed for ${serviceName}`);
+    console.error(` Database connection failed for ${serviceName}`);
     console.error(`   Error: ${error.message}`);
     
     try {

@@ -149,13 +149,13 @@ const { __mockData } = mockDb;
 
 app.use(express.json());
 
-// ✅ Middleware mock d'authentification
+// Middleware mock d'authentification
 const mockAuthenticate = (req, res, next) => {
   req.user = { userId: 1 }; // utilisateur fictif
   next();
 };
 
-// ✅ Health check
+// Health check
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -163,7 +163,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// ✅ Créer un ticket
+// Créer un ticket
 app.post('/api/tickets', (req, res) => {
   const { eventId, price, quantity } = req.body;
 
@@ -196,7 +196,7 @@ app.get('/api/tickets/:id', (req, res) => {
   return res.status(200).json(ticket);
 });
 
-// ✅ Acheter un ticket
+// Acheter un ticket
 app.post('/api/tickets/purchase', mockAuthenticate, (req, res) => {
   const { eventId, quantity } = req.body;
   const userId = req.user.userId;

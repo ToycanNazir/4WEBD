@@ -38,7 +38,7 @@ const Auth = ({ isRegister = false }) => {
       navigate('/dashboard');
 
     } catch (err) {
-      console.error('❌ Error:', err.message);
+      console.error(' Error:', err.message);
       setError(err.message);
     } finally {
       setLoading(false);

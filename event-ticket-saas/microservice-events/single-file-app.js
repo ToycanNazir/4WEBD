@@ -21,7 +21,7 @@ const authenticate = (req, res, next) => {
   
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    console.log('❌ Pas d\'en-tête d\'autorisation');
+    console.log('Pas d\'en-tête d\'autorisation');
     return res.status(401).json({ message: 'Authorization header is required' });
   }
   
@@ -30,7 +30,7 @@ const authenticate = (req, res, next) => {
   console.log('Parts:', parts);
   
   if (parts.length !== 2 || parts[0] !== 'Bearer') {
-    console.log('❌ Format d\'en-tête incorrect');
+    console.log('Format d\'en-tête incorrect');
     return res.status(401).json({ message: 'Authorization format should be: Bearer [token]' });
   }
   
@@ -45,12 +45,12 @@ const authenticate = (req, res, next) => {
     // Vérifie avec le secret
     console.log('Vérification avec secret:', JWT_SECRET);
     const decoded = jwt.verify(token, JWT_SECRET);
-    console.log('✅ Token vérifié avec succès:', decoded);
+    console.log('Token vérifié avec succès:', decoded);
     
     req.user = decoded;
     next();
   } catch (err) {
-    console.error('❌ Erreur JWT:', err.name, '-', err.message);
+    console.error('Erreur JWT:', err.name, '-', err.message);
     return res.status(401).json({ 
       message: 'Invalid token', 
       error: err.message,

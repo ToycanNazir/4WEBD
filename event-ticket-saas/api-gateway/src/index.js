@@ -63,7 +63,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// ✅ Proxy avec corps transmis manuellement
+// Proxy avec corps transmis manuellement
 const proxyWithBody = (target) => createProxyMiddleware({
   target,
   changeOrigin: true,
@@ -91,5 +91,5 @@ app.use('/', (req, res) => {
 });
 
 app.listen(port, host, () => {
-  console.log(`✅ API Gateway running on http://${host}:${port}`);
+  console.log(`API Gateway running on http://${host}:${port}`);
 });
